@@ -1,23 +1,41 @@
 ﻿#!/usr/bin/env python
+from __future__ import division
 import re
 import codecs
+
 
 def article_words_count(article):
     '''
     Nustatomas žodžių kiekis straipsnyje
     © Wirusiux
     '''
-    with codecs.open(article, encoding='utf-8') as content_file:
-        content = content_file.read()
-        words = re.split("\s",content.lower())
-        return len(words)
-
+    words = re.split("\s",article.lower())
+    return len(words)
+    
 def article_numbers_count(article):
     '''
     Nustatomas skaitmenų skaičius straipsnyje
     '''
-    # TODO implement logic
-    return 0
+    words = re.split("\s", article.lower())
+    intCount = 0
+    for word in words:
+        if hasNumbers(word):
+            intCount = intCount + 1
+    return intCount
+    
+def article_numbers_proportion(article):
+    '''
+    Gražinamas žodžių su skaičiais santykis
+    '''
+    return article_numbers_count(article)/article_words_count(article)
+    
+def string_from_file(fileName):
+    with codecs.open(fileName, encoding='utf-8') as content_file:
+        return content_file.read()
+        
+    
+def hasNumbers(inputString):
+    return bool(re.search(r'\d', inputString))
 
 def article_topic_compare(topic, article):
     '''
