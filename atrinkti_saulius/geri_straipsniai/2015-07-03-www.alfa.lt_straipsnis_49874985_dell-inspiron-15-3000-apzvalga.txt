@@ -1,0 +1,13 @@
+Nebrangaus nešiojamo kompiuterio pasirinkimas – tarsi lankymasis blusų turguje: vizualiai pasirinkimas didžiulis, tačiau ką nors išsirinkti yra labai sunku.
+Nešiojamų kompiuterių rinkoje jau kuris laikas galima rasti galybę modelių, kurie siūlo nedidelę kainą, panašias specifikacijas, tačiau skiriasi tik prekės ženklai.
+Kompanija „Dell“ nusprendė išsiskirti iš kitų gamintojų, pasiūlydama naujausią – „Intel Broadwell“ - platformą turintį nešiojamą kompiuterį „Inspiron 15 3000“ (3543). Jis gavo itin taupų procesorių „Pentium 3805U“ (1,9 GHz), sukurtą 14 nm technologijos pagrindu.
+Kaip kompanija „Dell“ sugebėjo pasinaudoti šia naujove ir ką jai pavyko pasiūlyti nebrangių naujienų ieškantiems pirkėjams, pabandysime atsakyti šioje apžvalgoje.
+Dizainas
+„Inspiron 15 3000“ (3543) savo išvaizda atkartoja praėjusių metų serijos „Inspiron 15 3000“ (3542) atstovus.
+Ekrano dangtis padarytas iš matinio plastiko. Ši tendencija stebima paskutinius keletą metų: gamintojai pagaliau suprato, kad blizgesys visiškai nepraktiškas, o nuolat akį badantys pirštų atspaudai tik erzina.
+Dangčio paviršius gruoblėtas, o tai neleidžia jam lengvai išsitepti, nors visiškai netepliu šio nešiojamo kompiuterio tikrai negalima vadinti.
+Nugarinė dalis, atvirkščiai, padaryta iš lygaus matinio plastiko, todėl čia nešvarumai matysis aiškiau. Tačiau ar kam nors dar rūpi, kaip atrodo apatinė nešiojamo kompiuterio dalis?
+Klaviatūra „pilna“, t.y. dešinėje pusėje rasime skaičių klaviatūrą.
+Klaviatūra teksto rinkimo metu neįdumba. Pačių mygtukų paspaudimas gana aiškus ir užtikrintas, nors iki brangesnių modelių patogumo labai toli. Tiesa, mūsų herojaus kaina yra tokia, jog apie tai užsiminti net nevertėjo – viskas kaip ir dera nebrangiam modeliui.
+Lietimui jautrus laukelis vientisas, matinės spalvos, jokio blizgesio – taigi ir mažiau nešvarumų. Paviršius šiurkštokas, o tai leidžia užtikrintai valdyti pelės žymeklį.
+Gaila, bet tarp funkcinių (Fn) mygtukų nėra tokio, kuris leistų vienu paspaudimu išjungti/įjungti lietimui jautrų laukelį, kadangi po atsitiktinių prisilietimų teksto rinkimo metu pelės žymeklis atsiduria visiškai ne ten, kur jam derėtų būti.
