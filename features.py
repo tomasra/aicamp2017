@@ -2,6 +2,7 @@
 from __future__ import division
 import re
 import codecs
+import time
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 
@@ -11,8 +12,7 @@ def article_words_count(article):
     © Wirusiux
     '''
     words = re.split("\s",article.lower())
-    return len(words)
-    
+    return len(words)    
 
 def article_numbers_count(article):
     '''
@@ -34,7 +34,30 @@ def article_numbers_proportion(article):
 def string_from_file(fileName):
     with codecs.open(fileName, encoding='utf-8') as content_file:
         return content_file.read()
-        
+
+def article_headline_parser(headline):
+    '''
+    Parsina antraštę į map'ą
+    Pvz.: 2015-01-26-augintinis.lrytas.lt_pamatyk_konkurso-mano-augintinis-graziausias-balsavimas-3-sav.htm.txt
+    Nuparsins datą (2015-01-26), puslapio pavadinimą (augintinis.lrytas.lt) etc..
+    '''
+    dateTimeStr = headline[:10]
+    dateTime = time.strptime(dateTimeStr,"%Y-%m-%d")
+    rez = {}
+    rez["datetime"] = dateTime
+
+    leftStuff = headline[11:]
+    m = re.search('^(.+?)_(.+?).htm.txt', leftStuff)
+    websitename = m.group(1)
+    rez["websitename"] = websitename
+    content = m.group(2)
+
+    m2 = re.search('^(.+)_(.+)', content)
+
+    rez["categories"] = m2.group(1).split("_")
+
+    rez["keywords"] = m2.group(2).split("-")
+    return rez
     
 def hasNumbers(inputString):
     return bool(re.search(r'\d', inputString))
