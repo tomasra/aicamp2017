@@ -3,7 +3,10 @@ from __future__ import division
 import re
 import codecs
 import time
+import nltk
 from sklearn.feature_extraction.text import TfidfVectorizer
+
+TOP_SENTENCES = 5
 
 
 def article_words_count(article):
@@ -12,7 +15,8 @@ def article_words_count(article):
     © Wirusiux
     '''
     words = re.split("\s",article.lower())
-    return len(words)    
+    return len(words)
+
 
 def article_numbers_count(article):
     '''
@@ -24,16 +28,19 @@ def article_numbers_count(article):
         if hasNumbers(word):
             intCount = intCount + 1
     return intCount
-    
+
+
 def article_numbers_proportion(article):
     '''
     Gražinamas žodžių su skaičiais santykis
     '''
-    return article_numbers_count(article)/article_words_count(article)
-    
+    return article_numbers_count(article) / article_words_count(article)
+
+
 def string_from_file(fileName):
     with codecs.open(fileName, encoding='utf-8') as content_file:
         return content_file.read()
+
 
 def article_headline_parser(headline):
     '''
@@ -61,7 +68,8 @@ def article_headline_parser(headline):
 
     rez["keywords"] = m2.group(2).split("-")
     return rez
-    
+
+
 def hasNumbers(inputString):
     return bool(re.search(r'\d', inputString))
 
@@ -71,7 +79,12 @@ def article_topic_compare(topic, article):
     Tikrinamas antraštės atitikimas straipsnio turiniui
     Nuspręsti ką gražina
     '''
-    # TODO implement logic
+    # Take first few most important sentences of the article
+    tokenizer = nltk.tokenize.PunktSentenceTokenizer()
+    sentences = tokenizer.tokenize(article)
+    if len(sentences) > TOP_SENTENCES:
+        sentences = sentences[:TOP_SENTENCES]
+    # TODO
     return 0
 
 
