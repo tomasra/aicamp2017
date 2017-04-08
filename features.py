@@ -47,10 +47,13 @@ def article_headline_parser(headline):
     rez["datetime"] = dateTime
 
     leftStuff = headline[11:]
-    m = re.search('^(.+?)_(.+?).htm.txt', leftStuff)
+    m = re.search('^(.+?)_(.+?)(.htm)?.txt', leftStuff)
     websitename = m.group(1)
     rez["websitename"] = websitename
     content = m.group(2)
+
+    #jei yra taskas gale, imam iki tasko:
+    content = content.split(".")[0]
 
     m2 = re.search('^(.+)_(.+)', content)
 

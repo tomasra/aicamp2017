@@ -10,4 +10,9 @@ filecontents = string_from_file("D:/aicamp/data/lt-news-201501-201506/2014-12-29
 print article_words_count(filecontents)
 print article_numbers_count(filecontents)
 print article_numbers_proportion(filecontents)
+
+print article_headline_parser("2015-01-28-www.5braskes.lt_linksmos_lyg-is-stiveno-kingo-naminiu-gyvuneliu-kapiniu-palaidotas-katinas-grizo-pas-seimininkus-video.d_id_67020202.txt")
+
 print article_headline_parser("2015-01-26-augintinis.lrytas.lt_pamatyk_konkurso-mano-augintinis-graziausias-balsavimas-3-sav.htm.txt")
+print article_headline_parser("2015-01-26-bendraukime.lrytas.lt_man-rupi_kaune-troleibuso-vairuotoja-viesai-zemino-neigalia-mergina.htm.txt")
+
