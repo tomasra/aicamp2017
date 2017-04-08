@@ -14,7 +14,7 @@ def article_words_count(article):
 
 def article_numbers_count(article):
     '''
-    Nustatomas skaitmenų sklaičius straipsnyje
+    Nustatomas skaitmenų skaičius straipsnyje
     '''
     # TODO implement logic
     return 0
