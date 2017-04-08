@@ -1,11 +1,16 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
+import re
+import codecs
 
 def article_words_count(article):
     '''
     Nustatomas žodžių kiekis straipsnyje
+    © Wirusiux
     '''
-    # TODO implement logic
-    return 0
+    with codecs.open(article, encoding='utf-8') as content_file:
+        content = content_file.read()
+        words = re.split("\s",content.lower())
+        return len(words)
 
 def article_numbers_count(article):
     '''
@@ -22,7 +27,7 @@ def article_topic_compare(topic, article):
     # TODO implement logic
     return 0
 
-def articles_compare(article, articles*):
+def articles_compare(article, *articles):
     '''
     Nustatomas straipsnio panašumas su kitais su kitais straipsniais
     Nuspręsti ką gražina
@@ -30,7 +35,7 @@ def articles_compare(article, articles*):
     # TODO implement logic
     return 0
 
-def article_timestamps(article, args*, kwargs**):
+def article_timestamps(article, *args, **kwargs):
     '''
     Įvertinamas straipsnių panašumas pagal stripsnio data ir turinį
     '''
