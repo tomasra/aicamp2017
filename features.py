@@ -2,6 +2,7 @@
 from __future__ import division
 import re
 import codecs
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 def article_words_count(article):
@@ -12,6 +13,7 @@ def article_words_count(article):
     words = re.split("\s",article.lower())
     return len(words)
     
+
 def article_numbers_count(article):
     '''
     Nustatomas skaitmenų skaičius straipsnyje
@@ -37,6 +39,7 @@ def string_from_file(fileName):
 def hasNumbers(inputString):
     return bool(re.search(r'\d', inputString))
 
+
 def article_topic_compare(topic, article):
     '''
     Tikrinamas antraštės atitikimas straipsnio turiniui
@@ -45,13 +48,17 @@ def article_topic_compare(topic, article):
     # TODO implement logic
     return 0
 
-def articles_compare(article, *articles):
+
+def article_avg_similarities(articles):
     '''
-    Nustatomas straipsnio panašumas su kitais su kitais straipsniais
-    Nuspręsti ką gražina
+    Nustatomas straipsnio panašumas su kitais straipsniais
     '''
-    # TODO implement logic
-    return 0
+    vectorizer = TfidfVectorizer()
+    tfidf = vectorizer.fit_transform(articles)
+    pairwise = tfidf * tfidf.T
+    avg_similarities = pairwise.sum(axis=0) / pairwise.shape[0]
+    return avg_similarities.tolist()[0]
+
 
 def article_timestamps(article, *args, **kwargs):
     '''
@@ -60,6 +67,7 @@ def article_timestamps(article, *args, **kwargs):
     # TODO implement logic
     return 0
 
+
 def article_category(article):
     '''
     Nustatoma straipsnio kategorija
@@ -67,7 +75,8 @@ def article_category(article):
     # TODO implement logic
     return 0
 
-def parse_article(article): 
+
+def parse_article(article):
     '''
     Pagalbibė f-ja kurį parsina straipsnį
     gražina pvz. {'words' : 0, numbers: 0 }
