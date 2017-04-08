@@ -1,68 +1,25 @@
 #!/usr/bin/env python
-import os
-import nltk
-import string
-from nltk.stem.porter import PorterStemmer
-from sklearn.feature_extraction.text import TfidfVectorizer
-
-STOPWORDS_FILE = 'stopwords-lt.txt'
+from clustering import get_clusters
+from articles import Article
 
 
-def get_stopwords():
-    stopwords = []
-    with open(STOPWORDS_FILE, 'r') as f:
-        for line in f:
-            stopwords.append(line.strip())
-    return stopwords
+def accuracy(actual_good, actual_bad, predicted_good, predicted_bad):
+    bad_count = 0
+    for bad in predicted_bad:
+        if bad in actual_bad:
+            bad_count += 1
+    good_count = 0
+    for good in predicted_good:
+        if good in actual_good:
+            good_count += 1
+    return
 
-
-stopwords = get_stopwords()
-stemmer = PorterStemmer()
-
-
-def get_documents(dir):
-    documents = []
-    for filename in os.listdir(dir):
-        with open(os.path.join(dir, filename), 'r') as f:
-            document = f.read()
-            document = document.lower()
-            # document = document.translate(
-            #     {ord(c): None for c in string.punctuation})
-            documents.append(document)
-
-            # tokens = [
-            #     token for token in nltk.word_tokenize(document)
-            #     if token not in stopwords]
-            # tokens = [stemmer.stem(token) for token in tokens]
-            # documents.append(tokens)
-    return documents
-
-
-def get_filenames(dir):
-    filenames = []
-    for filename in os.listdir(dir):
-        filenames.append(os.path.join(filename, dir))
-    return filenames
-
-
-def get_avg_similarities(documents):
-    vectorizer = TfidfVectorizer()
-    tfidf = vectorizer.fit_transform(documents)
-    pairwise = tfidf * tfidf.T
-    avg_similarities = pairwise.sum(axis=0) / pairwise.shape[0]
-    return avg_similarities.tolist()[0]
-
-
-def get_sentences(document, num_sentences=5):
-    tokenizer = nltk.tokenize.PunktSentenceTokenizer()
-    sentences = tokenizer.tokenize(document)
-    return sentences[:num_sentences]
-
-
-
-from clustering import _get_feature_vectors, get_clusters
 
 if __name__ == '__main__':
-    documents = get_documents('./data')
-    clusters = get_clusters(documents)
+    # articles_good = Article.read_full('./atrinkti_saulius/geri_straipsniai')
+    # articles_bad = Article.read_full('./atrinkti_saulius/blogi_straipsniai')
+    articles_good = Article.read_full('./atrinkti_ginte/geri')
+    articles_bad = Article.read_full('./atrinkti_ginte/blogi')
+    articles = articles_good + articles_bad
+    clusters = get_clusters(articles)
     import pdb; pdb.set_trace()

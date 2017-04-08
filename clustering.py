@@ -11,7 +11,9 @@ def _get_feature_vectors(articles):
 
     # Find similarities first
     vectorizer = TfidfVectorizer()
-    tfidf = vectorizer.fit_transform(articles)
+    # tfidf = vectorizer.fit_transform(articles)
+    tfidf = vectorizer.fit_transform([
+        article.text_simplified for article in articles])
     pairwise = tfidf * tfidf.T
     avg_similarities = pairwise.sum(axis=0) / pairwise.shape[0]
     avg_similarities = avg_similarities.tolist()[0]
